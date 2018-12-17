@@ -95,6 +95,7 @@ let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 set t_Co=256
 syntax on
+set background=dark
 colorscheme escuro
 
 " NERDTree -----------------------------
@@ -147,6 +148,3 @@ let g:colorizer_maxlines = 1000
 
 "vim-scripts/IndexedSearch
 let g:indexed_search_colors=0
-
-"Fix Highlight Colors
-hi Search cterm=NONE guifg=#FCE94F guibg=#C4A000
