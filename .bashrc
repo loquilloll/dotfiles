@@ -121,5 +121,9 @@ if [ -f /home/alvins/.local/lib/python3.5/site-packages/powerline/bindings/bash/
     source /home/alvins/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
+if [ -f /home/alvins/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source /home/alvins/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+fi
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias config='/usr/bin/git --git-dir=/home/alvins/.cfg/ --work-tree=/home/alvins'
