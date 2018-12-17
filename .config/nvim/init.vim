@@ -44,6 +44,12 @@ Plug 'vim-scripts/IndexedSearch'
 "Syntax highlighting Javascript
 Plug 'pangloss/vim-javascript'
 
+"Dockerfile syntax highlighting
+Plug 'ekalinin/Dockerfile.vim'
+
+"json helper, syntax highlighting
+Plug 'elzr/vim-json'
+
 "Syntax highlighting JSX
 Plug 'mxw/vim-jsx'
 
@@ -56,8 +62,6 @@ Plug 'jiangmiao/auto-pairs'
 " Mark indents blocks
 Plug 'Yggdroot/indentLine'
 
-"json helper, syntax highlighting
-Plug 'elzr/vim-json'
 
 "auto complete html tag
 Plug 'alvan/vim-closetag'
@@ -81,6 +85,7 @@ Plug 'lilydjwg/colorizer'
 
 
 " Tell vim-plug we finished declaring plugins, so it can load them
+:z
 call plug#end()
 
 " ============================================================================
