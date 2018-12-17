@@ -131,6 +131,9 @@ set tabstop=2 " tabs are n spaces
 " turn hybrid line numbers on
 set number relativenumber
 
+"Increment Live Feedback
+set inccommand=split
+
 "valloric/MatchTagAlways
 let g:mta_filetypes = {
   \ 'html' : 1,
