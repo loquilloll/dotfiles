@@ -62,7 +62,6 @@ Plug 'jiangmiao/auto-pairs'
 " Mark indents blocks
 Plug 'Yggdroot/indentLine'
 
-
 "auto complete html tag
 Plug 'alvan/vim-closetag'
 
@@ -83,6 +82,24 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'ap/vim-css-color'
 Plug 'lilydjwg/colorizer'
 
+"============Auto Completion==============
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'wokalski/autocomplete-flow'
+  " For func argument completion
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
+  " Deoplete autocompletion for Python
+  Plug 'zchee/deoplete-jedi'
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+
+"Select autocompletion menu with tab
+Plug 'ervandew/supertab'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 :z
@@ -96,6 +113,8 @@ if vim_plug_just_installed
     :PlugInstall
 endif
 
+"===============Themes\Colors==========================
+
 let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 set t_Co=256
@@ -103,7 +122,13 @@ syntax on
 set background=dark
 colorscheme escuro
 
-" NERDTree -----------------------------
+"lilydjwg/colorizer This plugin is still inefficient for large files
+let g:colorizer_maxlines = 1000
+
+"vim-scripts/IndexedSearch
+let g:indexed_search_colors=0
+
+"====================NERDTree===========================
 
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
@@ -114,7 +139,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " Show hidden files
 let NERDTreeShowHidden = 1
 
-
+"=================Folding========================
 "Folding based on indentation:
 autocmd FileType python set foldmethod=indent
 set foldmethod=indent
@@ -122,11 +147,51 @@ set foldmethod=indent
 nnoremap <space> za
 "Exit Insert mode quickly
 inoremap jj <ESC>
+
+"==============Navigations============
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" tab navigation mappings
+map tt :tabnew 
+map <M-Right> :tabn<CR>
+imap <M-Right> <ESC>:tabn<CR>
+map <M-Left> :tabp<CR>
+imap <M-Left> <ESC>:tabp<CR>
+
+"===========Auto Completion Settings===========
+set completeopt+=noinsert "select first item automatically
+
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
+let g:SuperTabDefaultCompletionType = "<c-n>" "Tab goes down the menu
+
+" Deoplete -----------------------------
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:context_filetype#same_filetypes = {} " complete with words from any opened file
+let g:context_filetype#same_filetypes._ = '_'
+" select soures based on file type
+		call deoplete#custom#option('sources', {
+		\ '_': ['buffer'],
+		\ 'cpp': ['buffer', 'tag'],
+    \ 'python' : ['jedi'],
+\})
+
+"--------------- Jedi-vim ------------------------------
+"" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
+
+"=======================================================
 
 " tabs and spaces handling
 set expandtab " expand tabs by default (overloadable per file type)
@@ -148,8 +213,4 @@ let g:mta_filetypes = {
   \ 'jinja' : 1,
   \ 'javascript.jsx' : 1}
 
-"lilydjwg/colorizer This plugin is still inefficient for large files
-let g:colorizer_maxlines = 1000
 
-"vim-scripts/IndexedSearch
-let g:indexed_search_colors=0
