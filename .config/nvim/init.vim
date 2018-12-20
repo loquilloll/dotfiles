@@ -128,6 +128,9 @@ let g:colorizer_maxlines = 1000
 "vim-scripts/IndexedSearch
 let g:indexed_search_colors=0
 
+"Split bar colors
+
+
 "====================NERDTree===========================
 
 " toggle nerdtree display
@@ -205,6 +208,9 @@ set number relativenumber
 "Increment Live Feedback
 set inccommand=split
 
+"Highlight match tag
+"let g:mta_use_matchparen_group = 1
+
 "valloric/MatchTagAlways
 let g:mta_filetypes = {
   \ 'html' : 1,
@@ -213,4 +219,5 @@ let g:mta_filetypes = {
   \ 'jinja' : 1,
   \ 'javascript.jsx' : 1}
 
-
+"Enable mount input
+set mouse=n
