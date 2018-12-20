@@ -1,7 +1,4 @@
-" TODO current problems:
-" * end key not working undef tmux+fish
-
-" ============================================================================
+" TODO current problems: * end key not working undef tmux+fish ============================================================================
 " Vim-plug initialization
 " Avoid modify this section, unless you are very sure of what you are doing
 
@@ -221,3 +218,9 @@ let g:mta_filetypes = {
 
 "Enable mount input
 set mouse=n
+
+"Open split down and Right
+set splitbelow
+set splitright
+
+
